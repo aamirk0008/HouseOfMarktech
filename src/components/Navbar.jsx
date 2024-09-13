@@ -1,14 +1,27 @@
-import { useState, useEffect } from 'react';
-
-export default function Navbar() {
+import { useState, useEffect, useRef } from 'react';
+import music from '../assets/music.mp3'
+export default function Navbar({ mode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioRef = useRef(null);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const toggleMusic = () => {
+    setIsPlaying(!isPlaying)
+    // Here you would add logic to actually play/pause the music
+    // For example:
+    if (isPlaying) {
+      audioRef.current.pause()
+    } else {
+      audioRef.current.play()
+    }
+  }
+
   useEffect(() => {
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -19,15 +32,15 @@ export default function Navbar() {
 
   const navItems = [
     { name: 'About', href: '#about' },
-    { name: 'Our Work', href: '#our-work' },
+    { name: 'Our Work', href: 'our-work' },
     { name: 'Solutions', href: '#solutions' },
     { name: 'Login', href: '#login' },
   ];
 
   return (
-    <nav className="py-8 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50 transition-all duration-300">
+    <nav className={`py-8 px-6 md:px-12 flex justify-between items-center w-full fixed top-0 z-50 transition-all duration-300 `}>
       {/* Logo */}
-      <div className="text-2xl md:text-3xl font-bold text-gray-800">
+      <div className="text-2xl md:text-3xl font-bold text-gray-500">
         LOGO
       </div>
 
@@ -37,11 +50,19 @@ export default function Navbar() {
           <a
             key={item.name}
             href={item.href}
-            className="px-8 py-3 text-gray-800 hover:bg-gray-300  rounded-full font-semibold transition-all duration-300"
+            className="px-8 py-3 text-gray-500 hover:bg-gray-300  rounded-full font-semibold transition-all duration-300"
           >
             {item.name}
           </a>
         ))}
+        <audio ref={audioRef} className=' hidden' src={music}></audio>
+        <button
+          onClick={toggleMusic}
+          className="p-3 rounded-full  text-white bg-blue-700 hover:bg-blue-950 transition-all duration-500"
+          aria-label={isPlaying ? "Pause music" : "Play music"}
+        >
+          {isPlaying ? <div className="font-bold px-2 transition-all duration-200 animate-fadeInUp">ll</div> : <div className="text-white font-bold px-2">&#119136;</div>}
+        </button>
         <button className="px-8 py-3 rounded-full bg-gray-800 text-white hover:bg-blue-700 font-bold transition-all duration-500">
           Let's Talk
         </button>
@@ -52,7 +73,7 @@ export default function Navbar() {
             className="px-8 py-3 bg-gray-300 text-black rounded-full hover:bg-white font-bold transition-all duration-500"
             onClick={toggleMenu}
           >
-            ☰ 
+            ☰
           </button>
 
           {/* Dropdown Menu */}
@@ -64,7 +85,7 @@ export default function Navbar() {
                     <a href={item.href}>{item.name}</a>
                   </li>
                 ))}
-                
+
               </ul>
             </div>
           )}
@@ -88,8 +109,16 @@ export default function Navbar() {
                     <a href={item.href}>{item.name}</a>
                   </li>
                 ))}
-                
+
               </ul>
+              <audio ref={audioRef} className=' hidden' src={music}></audio>
+              <button
+                onClick={toggleMusic}
+                className="p-3 rounded-full  text-white bg-blue-700 hover:bg-blue-950 transition-all duration-500"
+                aria-label={isPlaying ? "Pause music" : "Play music"}
+              >
+                {isPlaying ? <div className="font-bold px-2 transition-all duration-200 animate-fadeInUp">ll</div> : <div className="text-white font-bold px-2">&#119136;</div>}
+              </button>
               <button className="mt-2 px-8 py-3 rounded-full bg-gray-800 text-white hover:bg-blue-700 font-bold transition-all duration-500">
                 Let's Talk
               </button>

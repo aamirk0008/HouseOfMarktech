@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './Navbar'
 import Camera3d from './Camera3d'
 import WorkHero from './WorkHero'
 import Footer from './Footer'
 import Gallery from './Gallery'
+import GoToTopButton from './Gototop'
 
 const OurWork = () => {
+  
   return (
     <>
-      <Navbar/>
+      <Navbar mode='dark'/>
+      <GoToTopButton/>
       <WorkHero/>
       <Gallery/>
-      <Footer/>
+      <Footer mode='dark' next='Solutions'/>
       {/* <Camera3d/> */}
     </>
   )

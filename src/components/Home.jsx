@@ -18,7 +18,7 @@ const Home = () => {
       <Solutions/>
       <Testimonials/>
       <Companies/>
-      <Footer/>
+      <Footer mode='light' next='About'/>
     </>
   )
 }
