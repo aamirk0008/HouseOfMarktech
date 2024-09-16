@@ -23,13 +23,16 @@ const Modal = ({ isOpen, onClose }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://sendemail-phi.vercel.app/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await response.json();
       if (response.ok) {
@@ -149,8 +152,8 @@ const SolutionsHome = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-900 to-black text-white pt-40">
-      <div className="flex flex-col items-center py-10 sm:py-20 px-5 sm:px-10">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-900 to-black text-white ">
+      <div className="flex flex-col items-center justify-center min-h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black px-5 sm:px-10 py-10 sm:py-20">
         <div className="flex flex-col sm:flex-row items-center justify-start w-full sm:ml-8">
           <h1
             className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-5 tracking-wider text-center sm:text-left"
