@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from './Navbar'
 import GoToTopButton from './Gototop'
 import HeroSection from './HeroSection'

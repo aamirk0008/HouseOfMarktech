@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import  { useState,useEffect } from 'react'
 import femaleai from '../assets/images/aibot2.png'
 import maleai from '../assets/images/aibot.png'
 import clickme from '../assets/images/clickme.png'
