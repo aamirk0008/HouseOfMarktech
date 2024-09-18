@@ -31,16 +31,18 @@ export default function Navbar({ mode }) {
   }, []);
 
   const navItems = [
-    { name: "About", href: "#about" },
+    { name: "About", href: "/about" },
     { name: "Our Work", href: "/our-work" }, // Adjusted href to a valid route
     { name: "Solutions", href: "/solutions" }, // Link to Solutions route
-    { name: "Login", href: "#login" },
+    { name: "Blogs", href: "/blogs" }, // Link to Solutions route
+    { name: "Login", href: "/login" },
   ];
 
   return (
     <nav className="py-8 px-6 md:px-12 flex justify-between items-center w-full fixed top-0 z-50 transition-all duration-300">
       {/* Logo */}
-      <div
+      <Link
+      to={'/'}
         className="text-2xl md:text-3xl font-bold text-gray-800"
         style={{
           textShadow:
@@ -48,7 +50,7 @@ export default function Navbar({ mode }) {
         }}
       >
         LOGO
-      </div>
+      </Link>
       {/* Right-side buttons */}
       <div className="hidden md:flex items-center space-x-4">
         {!isScrolled &&
@@ -75,8 +77,8 @@ export default function Navbar({ mode }) {
             <div className="text-white font-bold px-2">&#119136;</div>
           )}
         </button>
-        <button className="mt-2 px-8 py-3 rounded-full bg-gradient-to-b from-gray-400 via-gray-700 to-black text-white hover:bg-blue-700 font-bold transition-all duration-500">
-          Lets Talk
+        <button className="mt-2 px-8 py-3 rounded-full bg-gray-800 text-white hover:bg-blue-700 font-bold transition-all duration-500">
+          Let's Talk
         </button>
 
         {/* Menu Button */}
@@ -144,8 +146,8 @@ export default function Navbar({ mode }) {
                   <div className="text-white font-bold px-2">&#119136;</div>
                 )}
               </button>
-             <button className="mt-2 px-8 py-3 rounded-full bg-gradient-to-b from-gray-400 via-gray-700 to-black text-white hover:bg-blue-700 font-bold transition-all duration-500">
-                Lets Talk
+             <button className="mt-2 px-8 py-3 rounded-full bg-gray-800 text-white hover:bg-blue-700 font-bold transition-all duration-500">
+                Let's Talk
               </button>
             </div>
           )}

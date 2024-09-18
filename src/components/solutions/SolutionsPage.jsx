@@ -7,7 +7,7 @@ export default function SolutionsPage() {
     <div>
       <Navbar />
       <SolutionsHome />
-      <Footer />
+      <Footer next={'Blogs'}/>
     </div>
   );
 }
