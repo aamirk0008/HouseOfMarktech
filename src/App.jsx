@@ -2,9 +2,9 @@
 
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
-import OurWork from "./components/OurWork";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import OurWork from "./pages/OurWork";
 import SolutionsPage from "./components/solutions/SolutionsPage";
 import BubblePage from "./components/solutions/page/Bubblepage";
 function App() {

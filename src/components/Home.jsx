@@ -1,25 +1,21 @@
-import Navbar from './Navbar'
-import GoToTopButton from './Gototop'
-import HeroSection from './HeroSection'
-import CTA from './CTA'
-import Solutions from './Solutions'
-import Testimonials from './Testimonials'
-import Companies from './Companies'
-import Footer from './Footer'
+import React from "react";
+import Social from "./Social";
+import HorizontalScroll from "./HorizontalScroll";
+
 
 const Home = () => {
   return (
     <>
-      <Navbar/>
-      <GoToTopButton/>
-      <HeroSection/>
-      <CTA/>
-      <Solutions/>
-      <Testimonials/>
-      <Companies/>
-      <Footer mode='light' next='About'/>
-    </>
-  )
-}
+      
+      <div className='h-[550px] text-white flex justify-center items-center bg-[url("https://growify.in/cdn/shop/files/about_us_hero.jpg?v=1716293561&width=1800")]'>
+        <h1 className="text-6xl">We grow when you grow</h1>
+      </div>
+      
+      <HorizontalScroll/>
 
-export default Home
+      <Social/>
+    </>
+  );
+};
+
+export default Home;
