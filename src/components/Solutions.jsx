@@ -1,7 +1,10 @@
 
-import { useState } from 'react'
-
 import  cardcover  from "../assets/images/playingcard.png";
+
+
+import React,{ useState, useEffect, useRef } from 'react'
+
+
 const cards = [
   { id: 1, front: "Struggling to identify and reach your target audience effectively?", backHeading: "Target Audience Identification & Reach", backSubheading: "Social Media Handling, SEO, and Google Ads" },
   { id: 2, front: "Difficulty in generating leads and converting them into loyal customers?", backHeading: "Lead Generation & Conversion", backSubheading: "Content Production, PR, and Branding" },
@@ -15,48 +18,85 @@ const cards = [
 
 export default function FlippableCards() {
   const [flippedCards, setFlippedCards] = useState([])
+  const cardRefs = useRef(cards.map(() => React.createRef()));
+  const lastScrollTop = useRef(0)
+  const isScrollingUp = useRef(false)
 
-  const handleFlip = (cardId) => {
-    setFlippedCards(prev => 
-      prev.includes(cardId) 
-        ? prev.filter(id => id !== cardId) 
-        : [...prev, cardId]
-    )
-  }
+  useEffect(() => {
+    const handleScroll = () => {
+      const st = window.scrollY || document.documentElement.scrollTop
+      isScrollingUp.current = st < lastScrollTop.current
+      lastScrollTop.current = st <= 0 ? 0 : st
+    }
+
+    window.addEventListener('scroll', handleScroll, false)
+    return () => window.removeEventListener('scroll', handleScroll, false)
+  }, [])
+
+  useEffect(() => {
+    let timeout
+
+    const observers = cardRefs.current.map((ref, index) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !isScrollingUp.current) {
+            timeout = setTimeout(() => {
+              setFlippedCards(prev => [...prev, cards[index].id])
+            }, index % 4 * 150) // Delay based on odd/even index
+          } else if (!entry.isIntersecting && isScrollingUp.current) {
+            timeout = setTimeout(() => {
+              setFlippedCards(prev => prev.filter(id => id !== cards[index].id))
+            }, index % 4 * 150) // Delay based on odd/even index
+          }
+        },
+        { threshold: 0.5 }
+      )
+
+      if (ref.current) {
+        observer.observe(ref.current)
+      }
+
+      return observer
+    })
+
+    return () => {
+      observers.forEach(observer => observer.disconnect())
+      clearTimeout(timeout)
+    }
+  }, [])
 
   return (
     <>
-    <div className='hidden lg:block h-screen w-screen'>
-
-    </div>
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <h1 className='text-4xl font-bold mb-4 text-left md:text-center'>Struggling with Challenges in the Business Industry?</h1>
-      <h1 className='text-2xl font-bold mb-12 text-left md:text-center'><span className='text-blue-600'>House of Marktech</span> Delivers the Best Solutions to Overcome Every Obstacle.</h1>
-      
-      <div className="flex flex-wrap justify-center gap-x-12 gap-y-16 mt-8">
-        {cards.map((card) => (
-          <div
-          key={card.id}
-          className="relative w-64 h-96 m-2 [perspective:1000px] group cursor-pointer "
-          onClick={() => handleFlip(card.id)}
-          >
+      <div className='hidden lg:block h-screen w-screen'></div>
+      <div className="flex flex-col items-center justify-center min-h-screen p-4">
+        <h1 className='text-4xl font-bold mb-4 text-left md:text-center'>Struggling with Challenges in the Business Industry?</h1>
+        <h1 className='text-2xl font-bold mb-12 text-left md:text-center'>
+          <span className='text-blue-600'>House of Marktech</span> Delivers the Best Solutions to Overcome Every Obstacle.
+        </h1>
+        
+        <div className="flex flex-wrap justify-center gap-x-12 gap-y-16 mt-8">
+          {cards.map((card, index) => (
             <div
-              className={`absolute w-full h-full transition-all duration-500 [transform-style:preserve-3d] 
-                ${flippedCards.includes(card.id) ? '[transform:rotateY(180deg)]' : ''}`}
+              key={card.id}
+              ref={cardRefs.current[index]}
+              className="relative w-64 h-96 m-2 [perspective:1000px] group"
             >
-              <div className="absolute w-full h-full bg-white rounded-2xl shadow-lg flex flex-col justify-between overflow-hidden [backface-visibility:hidden]">
-                <img src={cardcover} alt="" className='w-full h-full object-cover'/>
-              </div>
-              <div className="absolute w-full h-full bg-white text-black rounded-xl shadow-lg flex flex-col justify-between p-4 py-8 [transform:rotateY(180deg)] [backface-visibility:hidden]">
-              <h2 className='text-base  text-start'>{card.front}</h2>
-                <h2 className='text-xl font-bold text-right'>{card.backSubheading}</h2>
-                {/* <p className='text-right pl-4'>{card.backSubheading}</p> */}
+              <div
+                className={`absolute w-full h-full transition-all duration-700 [transform-style:preserve-3d] 
+                  ${flippedCards.includes(card.id) ? '[transform:rotateY(180deg)]' : ''}`}
+              >
+                <div className="absolute w-full h-full bg-white rounded-2xl shadow-lg flex flex-col justify-between overflow-hidden [backface-visibility:hidden]">
+                  <img src={cardcover} alt=""  className='w-full h-full object-cover'/>
+                </div>
+                <div className="absolute w-full h-full bg-white text-black rounded-xl shadow-lg flex flex-col justify-between p-4 py-8 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <h2 className='text-base text-start'>{card.front}</h2>
+                  <h2 className='text-2xl font-bold text-right '>{card.backSubheading}</h2>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-        </>
+    </>
   )
 }

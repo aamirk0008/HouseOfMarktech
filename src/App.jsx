@@ -7,6 +7,7 @@ import About from "./pages/About";
 import OurWork from "./pages/OurWork";
 import SolutionsPage from "./components/solutions/SolutionsPage";
 import BubblePage from "./components/solutions/page/Bubblepage";
+import Blog from "./pages/Blog";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
           <Route path="/our-work" element={<OurWork />} />
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/description/:name" element={<BubblePage />} />
+          {/* <Route path="/blogs" element={<Blog/>}/> */}
         </Routes>
       </Router>
       {/* <Navbar/>
