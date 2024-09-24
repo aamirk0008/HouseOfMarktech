@@ -106,7 +106,7 @@ const BlogsCard = ( {selectedCategory = 'All'} ) => {
                     <img className="w-[350px] rounded-t-lg" src={data.imgUrl} alt="" />
                     </div>
                     <div className="flex flex-col gap-2 mt-3 p-5">
-                    <h4 className="text-sm bg-blue-300 w-[170px] text-center px-2 py-1 rounded-lg">{data.hashtag}</h4>
+                    <h4 className="text-sm bg-blue-300 w-[185px] text-center px-2 py-1 rounded-lg">{data.hashtag}</h4>
                     <h1 className="font-bold">{data.title}</h1>
                     <h3 className="text-lg">{data.author}</h3>
                     <p>{data.date}</p>
