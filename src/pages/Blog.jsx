@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import BlogNav from '../components/BlogNav'
-import { Outlet, RouterProvider } from 'react-router-dom'
-import router from '../routers/router'
+// import { Outlet, RouterProvider } from 'react-router-dom'
+// import router from '../routers/router'
+import BlogHome from '../components/BlogHome'
+import { Outlet } from 'react-router-dom'
+import Navbar from '../components/Navbar'
 
 
 function Blog() {
@@ -9,10 +12,13 @@ function Blog() {
 
   return (
     <>
+    <Navbar/>
+    <div className='mt-32'>
       <BlogNav/>
-      <div className="min-h-screen">
-        <RouterProvider router={router}/>
-      </div>
+      <Outlet/>
+
+    </div>
+      {/* <BlogHome/> */}
     </>
   )
 }

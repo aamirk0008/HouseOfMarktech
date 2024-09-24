@@ -5,7 +5,7 @@ import { FaHandPointRight } from "react-icons/fa";
 import Explore from './Explore'
 import { useState } from "react";
 
-const Home = () => {
+const BlogHome = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
@@ -136,4 +136,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default BlogHome

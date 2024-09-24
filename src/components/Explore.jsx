@@ -8,7 +8,7 @@ const Explore = () => {
             <div className='my-16'>
                 <ul className='grid grid-cols-3 gap-16'>
                     <li>
-                        <a className='flex gap-8 hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg p-2' href="/marketing">
+                        <a className='flex gap-8 hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg p-2' href="/blogs/marketing">
                             <div className='bg-gray-400 p-5 rounded-full'>
                                 <img className='w-56' src="https://www.webfx.com/wp-content/themes/fx/assets/img/blog/v3/main-page/categories/marketing-icon.png" alt="" />
 
@@ -20,7 +20,7 @@ const Explore = () => {
                         </a>
                     </li>
                     <li>
-                        <a className='flex gap-8 hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg p-1' href="/seo">
+                        <a className='flex gap-8 hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg p-1' href="/blogs/seo">
                             <div className='bg-gray-400 p-5 rounded-full'>
                                 <img className='w-48' src="https://www.webfx.com/wp-content/themes/fx/assets/img/blog/v3/main-page/categories/seo-icon.png" alt="" />
 
@@ -32,7 +32,7 @@ const Explore = () => {
                         </a>
                     </li>
                     <li>
-                        <a className='flex gap-8 p-2 hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg' href="/ppc">
+                        <a className='flex gap-8 p-2 hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg' href="/blogs/ppc">
                             <div className='bg-gray-400 p-5 rounded-full'>
                                 <img className='w-48' src="https://www.webfx.com/wp-content/themes/fx/assets/img/blog/v3/main-page/categories/ppc-icon.png" alt="" />
 
@@ -44,7 +44,7 @@ const Explore = () => {
                         </a>
                     </li>
                     <li>
-                        <a className='flex hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg gap-8 p-1' href="/social-media">
+                        <a className='flex hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg gap-8 p-1' href="/blogs/social-media">
                             <div className='bg-gray-400 p-4 rounded-full'>
                                 <img className='w-48' src="https://www.webfx.com/wp-content/themes/fx/assets/img/blog/v3/main-page/categories/social-media-icon.png" alt="" />
 
@@ -56,7 +56,7 @@ const Explore = () => {
                         </a>
                     </li>
                     <li>
-                        <a className='flex gap-8 p-2 hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg' href="/web-design">
+                        <a className='flex gap-8 p-2 hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg' href="/blogs/web-design">
                             <div className='bg-gray-400 p-5 rounded-full'>
                                 <img className='w-48' src="https://www.webfx.com/wp-content/themes/fx/assets/img/blog/v3/main-page/categories/web-design-icon.png" alt="" />
 
@@ -68,7 +68,7 @@ const Explore = () => {
                         </a>
                     </li>
                     <li>
-                        <a className='flex gap-8 p-1 hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg' href="/internet">
+                        <a className='flex gap-8 p-1 hover:transform hover:scale-110 duration-300 ease-in-out hover:shadow-[0px_0px_30px] rounded-lg' href="/blogs/internet">
                             <div className='bg-gray-400 p-5 rounded-full'>
                                 <img className='w-48' src="https://www.webfx.com/wp-content/themes/fx/assets/img/blog/v3/main-page/categories/internet-icon.png" alt="" />
 
